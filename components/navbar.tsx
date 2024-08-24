@@ -6,7 +6,7 @@ import {
   NavbarBrand,
   NavbarItem,
 } from "@nextui-org/navbar"
-import NextLink from "next/link"
+import { Link } from "@nextui-org/link"
 
 import { siteConfig } from "@/config/site"
 import { ThemeSwitch } from "@/components/theme-switch"
@@ -16,9 +16,9 @@ function NavItems() {
     <>
       {siteConfig.navItems.map((item) => (
         <NavbarItem key={item.href}>
-          <NextLink color="foreground" href={item.href}>
+          <Link color="foreground" href={item.href}>
             {item.label}
-          </NextLink>
+          </Link>
         </NavbarItem>
       ))}
     </>
@@ -30,9 +30,9 @@ export const Navbar = () => {
     <NextUINavbar shouldHideOnScroll maxWidth="full" position="sticky">
       <NavbarContent>
         <NavbarBrand as="li" className="max-w-fit">
-          <NextLink className="flex items-center justify-start gap-2" href="/">
+          <Link className="flex items-center justify-start gap-2" href="/">
             <p className="font-bold">{siteConfig.name}</p>
-          </NextLink>
+          </Link>
         </NavbarBrand>
         <ul className="ml-4 hidden justify-start gap-4 sm:flex">
           <NavItems />
