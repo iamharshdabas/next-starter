@@ -69,6 +69,9 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
           ),
         })}
       >
+        {/*
+         * WARN: `Unexpected value inherit parsing height attribute.` is due to these icons.
+         */}
         {!isSelected || isSSR ? (
           <Sun2 iconStyle="BoldDuotone" size={24} />
         ) : (
