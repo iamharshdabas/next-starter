@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -7,18 +9,23 @@ import {
   NavbarItem,
 } from "@nextui-org/navbar"
 import { Link } from "@nextui-org/link"
+import { usePathname } from "next/navigation"
 
 import { siteConfig } from "@/config/site"
 import { ThemeSwitch } from "@/components/theme-switch"
 
 function NavItems() {
+  const pathName = usePathname()
+
   return (
     <>
       {siteConfig.navItems.map((item) => (
-        <NavbarItem key={item.href}>
-          <Link color="foreground" href={item.href}>
-            {item.label}
-          </Link>
+        <NavbarItem
+          key={item.href}
+          className="text-foreground data-[active=true]:text-primary"
+          data-active={item.href === pathName}
+        >
+          <Link href={item.href}>{item.label}</Link>
         </NavbarItem>
       ))}
     </>
@@ -31,7 +38,7 @@ export const Navbar = () => {
       <NavbarContent>
         <NavbarBrand as="li" className="max-w-fit">
           <Link className="flex items-center justify-start gap-2" href="/">
-            <p className="font-bold">{siteConfig.name}</p>
+            <p className="font-bold text-foreground">{siteConfig.name}</p>
           </Link>
         </NavbarBrand>
         <ul className="ml-4 hidden justify-start gap-4 sm:flex">
