@@ -6,7 +6,9 @@ import { SwitchProps, useSwitch } from "@nextui-org/switch"
 import { useTheme } from "next-themes"
 import { useIsSSR } from "@react-aria/ssr"
 import clsx from "clsx"
-import { Moon, Sun2 } from "solar-icon-set/weather"
+
+import SolarSunFogBoldDuotone from "./icon/SolarSunFogBoldDuotone"
+import SolarMoonFogBoldDuotone from "./icon/SolarMoonFogBoldDuotone"
 
 export interface ThemeSwitchProps {
   className?: string
@@ -69,13 +71,10 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
           ),
         })}
       >
-        {/*
-         * WARN: `Unexpected value inherit parsing height attribute.` is due to these icons.
-         */}
         {!isSelected || isSSR ? (
-          <Sun2 iconStyle="BoldDuotone" size={24} />
+          <SolarSunFogBoldDuotone />
         ) : (
-          <Moon iconStyle="BoldDuotone" size={24} />
+          <SolarMoonFogBoldDuotone />
         )}
       </div>
     </Component>
