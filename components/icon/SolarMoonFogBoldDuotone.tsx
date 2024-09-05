@@ -28,4 +28,3 @@ function SolarMoonFogBoldDuotone(props: SVGProps<SVGSVGElement>) {
   )
 }
 export default SolarMoonFogBoldDuotone
-
