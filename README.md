@@ -10,7 +10,9 @@ This is a template for creating applications using Next.js 14 (app directory) an
 - [Tailwind Variants](https://tailwind-variants.org)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
+- [Next Themes](https://github.com/pacocoursey/next-themes)
+- [Drizzle](https://orm.drizzle.team/)
+- [Neon](https://neon.tech/)
 
 ### Icons
 
@@ -31,6 +33,12 @@ degit iamharshdabas/next-starter my-app
 
 ```bash
 bun install
+```
+
+### Update environment variables
+
+```bash
+cp .env.example .env.local
 ```
 
 ### Run the development server
