@@ -1,12 +1,15 @@
-import { Button } from "@nextui-org/button"
+"use client"
+
 import { Image } from "@nextui-org/image"
 import { Spacer } from "@nextui-org/spacer"
+import { useSession } from "next-auth/react"
 
 import { subtitle, title } from "@/config/primitives"
-import { auth } from "@/server/auth"
+import AuthSignOut from "@/components/auth/signout"
+import AuthDelete from "@/components/auth/delete"
 
-export default async function Profile() {
-  const session = await auth()
+export default function Profile() {
+  const { data: session } = useSession()
 
   return (
     <section>
@@ -17,21 +20,19 @@ export default async function Profile() {
           src={session?.user?.image?.toString()}
           width={256}
         />
+
         <div className="mt-8 text-center sm:text-start">
-          <span className={title({ size: "lg", color: "foreground" })}>
+          <h1 className={title({ size: "lg", color: "foreground" })}>
             {session?.user?.name}
-          </span>
+          </h1>
           <Spacer y={4} />
-          <span className={subtitle({ class: "ml-1" })}>
+          <h2 className={subtitle({ className: "ml-1" })}>
             {session?.user?.email}
-          </span>
-          <div className="mt-16 space-x-4">
-            <Button type="submit" variant="ghost">
-              Signout
-            </Button>
-            <Button color="danger" variant="light">
-              Delete account
-            </Button>
+          </h2>
+          <Spacer y={8} />
+          <div className="space-x-4">
+            <AuthSignOut />
+            <AuthDelete />
           </div>
         </div>
       </div>

@@ -13,7 +13,7 @@ export default function Home() {
         <h1 className={title({ size: "lg" })}>
           websites regardless of your design experience.
         </h1>
-        <h2 className={subtitle({ class: "mt-4" })}>
+        <h2 className={subtitle({ className: "mt-4" })}>
           Beautiful, fast and modern React UI library.
         </h2>
       </div>

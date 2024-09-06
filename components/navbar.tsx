@@ -33,6 +33,7 @@ export const Navbar = () => {
       onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarContent>
+        <NavbarMenuToggle className="sm:hidden" />
         <NavbarBrand as="li" className="max-w-fit">
           <Link className="flex items-center justify-start gap-2" href="/">
             <p className="font-bold text-foreground">{siteConfig.name}</p>
@@ -64,7 +65,7 @@ export const Navbar = () => {
           />
         ) : (
           <Button color="primary" variant="shadow" onPress={() => signIn()}>
-            Login
+            SignIn
           </Button>
         )}
       </NavbarContent>
@@ -72,7 +73,11 @@ export const Navbar = () => {
       {/* MENU */}
       <NavbarContent className="sm:hidden" justify="end">
         <ThemeSwitch />
-        <NavbarMenuToggle />
+        {!session && (
+          <Button color="primary" variant="shadow" onPress={() => signIn()}>
+            SignIn
+          </Button>
+        )}
       </NavbarContent>
 
       <NavbarMenu>
@@ -82,6 +87,7 @@ export const Navbar = () => {
               key={item.href}
               className="text-foreground data-[active=true]:text-primary"
               data-active={item.href === pathName}
+              hidden={item.label === "Profile" && !session}
             >
               <Link href={item.href} onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 {item.label}
