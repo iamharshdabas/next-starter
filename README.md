@@ -13,6 +13,7 @@ This is a template for creating applications using Next.js 14 (app directory) an
 - [Next Themes](https://github.com/pacocoursey/next-themes)
 - [Drizzle](https://orm.drizzle.team/)
 - [Neon](https://neon.tech/)
+- [Auth.js](https://authjs.dev/)
 
 ### Icons
 
@@ -39,6 +40,7 @@ bun install
 
 ```bash
 cp .env.example .env.local
+bunx auth secret
 ```
 
 ### Run the development server
