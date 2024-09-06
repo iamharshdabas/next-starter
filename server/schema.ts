@@ -4,15 +4,9 @@ import {
   integer,
   pgTable,
   primaryKey,
-  serial,
   text,
   timestamp,
 } from "drizzle-orm/pg-core"
-
-export const something = pgTable("something", {
-  id: serial("id").primaryKey().notNull(),
-  title: text("title").notNull(),
-})
 
 export const users = pgTable("user", {
   id: text("id")

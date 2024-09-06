@@ -43,6 +43,28 @@ cp .env.example .env.local
 bunx auth secret
 ```
 
+#### Get credentials
+
+##### Github
+
+Callback URL
+
+```text
+https://example.com/api/auth/callback/github
+```
+
+Get credentials form [here](https://github.com/settings/developers)
+
+##### Google
+
+Callback URL
+
+```text
+https://example.com/api/auth/callback/google
+```
+
+Get credentials form [here](https://console.cloud.google.com/cloud-resource-manager)
+
 ### Run the development server
 
 ```bash
