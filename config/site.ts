@@ -8,5 +8,9 @@ export const siteConfig = {
       label: "Home",
       href: "/",
     },
+    {
+      label: "Profile",
+      href: "/profile",
+    },
   ],
 }
