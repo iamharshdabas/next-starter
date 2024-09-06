@@ -1,18 +1,18 @@
 "use client"
 
+import { Link } from "@nextui-org/link"
 import {
-  Navbar as NextUINavbar,
+  NavbarBrand,
   NavbarContent,
+  NavbarItem,
   NavbarMenu,
   NavbarMenuToggle,
-  NavbarBrand,
-  NavbarItem,
+  Navbar as NextUINavbar,
 } from "@nextui-org/navbar"
-import { Link } from "@nextui-org/link"
 import { usePathname } from "next/navigation"
 
-import { siteConfig } from "@/config/site"
 import { ThemeSwitch } from "@/components/theme-switch"
+import { siteConfig } from "@/config/site"
 
 function NavItems() {
   const pathName = usePathname()
