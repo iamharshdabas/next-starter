@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint . --ext .ts,.tsx -c .eslintrc.json --fix",
     "format": "prettier --write '**/*.{js,jsx,ts,tsx,json,css,md}' --ignore-path .prettierignore",
-    "db:generate": "drizzle-kit generate",
+    "db:dev": "drizzle-kit studio",
+    "db:gen": "drizzle-kit generate",
     "db:push": "drizzle-kit push"
   },
   "dependencies": {
