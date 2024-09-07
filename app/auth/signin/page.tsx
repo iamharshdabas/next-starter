@@ -4,12 +4,14 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { Link } from "@nextui-org/link"
 import { Spacer } from "@nextui-org/spacer"
 import { useAction } from "next-safe-action/hooks"
+import { useState } from "react"
 import { FormProvider, useForm } from "react-hook-form"
 import { z } from "zod"
 
 import {
   AuthCard,
   AuthEmail,
+  AuthError,
   AuthPassword,
   AuthProviders,
   AuthSignIn,
@@ -25,9 +27,17 @@ const SignIn = () => {
     resolver: zodResolver(signInSchema),
   })
 
-  const { execute, isPending } = useAction(signInAction)
+  const [error, setError] = useState("")
 
-  const onSubmit = async (data: FormData) => {
+  const { execute, isPending } = useAction(signInAction, {
+    onSuccess: (data) => {
+      if (data.data?.error) {
+        setError(data.data.error)
+      }
+    },
+  })
+
+  const onSubmit = (data: FormData) => {
     execute(data)
   }
 
@@ -47,6 +57,12 @@ const SignIn = () => {
             <AuthEmail />
             <Spacer y={4} />
             <AuthPassword />
+            {error && (
+              <>
+                <Spacer y={4} />
+                <AuthError error={error} />
+              </>
+            )}
             <Spacer y={4} />
             <AuthSignIn isDisabled={isPending} isLoading={isPending} />
           </form>

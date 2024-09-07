@@ -1,6 +1,7 @@
 export * from "./card"
 export * from "./delete"
 export * from "./email"
+export * from "./error"
 export * from "./password"
 export * from "./providers"
 export * from "./signin"
