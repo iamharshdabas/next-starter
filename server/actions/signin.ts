@@ -17,7 +17,7 @@ export const signInAction = action
       where: eq(users.email, email),
     })
 
-    if (!existingUser) {
+    if (existingUser?.email !== email) {
       return { error: "User not found" }
     }
 

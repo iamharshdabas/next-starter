@@ -31,6 +31,7 @@ const SignIn = () => {
 
   const { execute, isPending } = useAction(signInAction, {
     onSuccess: (data) => {
+      setError("")
       if (data.data?.error) {
         setError(data.data.error)
       }

@@ -18,7 +18,7 @@ export const signUpAction = action
       where: eq(users.email, email),
     })
 
-    if (existingUser) {
+    if (existingUser?.email === email) {
       return { error: "User already exists" }
     }
 

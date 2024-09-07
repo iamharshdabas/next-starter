@@ -32,6 +32,7 @@ const SignUp = () => {
 
   const { execute, isPending } = useAction(signUpAction, {
     onSuccess: (data) => {
+      setError("")
       if (data.data?.error) {
         setError(data.data.error)
       }
