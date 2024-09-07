@@ -2,10 +2,9 @@ import { Button } from "@nextui-org/button"
 import { Spacer } from "@nextui-org/spacer"
 import { signIn } from "next-auth/react"
 
-import LogosGithubIcon from "../icon/LogosGithubIcon"
-import LogosGoogleIcon from "../icon/LogosGoogleIcon"
+import { LogosGithubIcon, LogosGoogleIcon } from "../icon"
 
-export default function AuthProviders() {
+export const AuthProviders = () => {
   return (
     <div>
       <Button

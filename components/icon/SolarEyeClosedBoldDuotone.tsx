@@ -1,11 +1,11 @@
-import React, { SVGProps } from "react"
+import { SVGProps } from "react"
 
-export function SolarEyeClosedBoldDuotone(props: SVGProps<SVGSVGElement>) {
+export const SolarEyeClosedBoldDuotone = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
-      height="1em"
+      height="2em"
       viewBox="0 0 24 24"
-      width="1em"
+      width="2em"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
@@ -23,5 +23,3 @@ export function SolarEyeClosedBoldDuotone(props: SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
-export default SolarEyeClosedBoldDuotone
-

@@ -1,9 +1,9 @@
 import { Code } from "@nextui-org/code"
 import { Snippet } from "@nextui-org/snippet"
 
-import { subtitle, title } from "@/config/primitives"
+import { subtitle, title } from "@/config"
 
-export default function Home() {
+const Home = () => {
   return (
     <section>
       <div>
@@ -28,3 +28,5 @@ export default function Home() {
     </section>
   )
 }
+
+export default Home

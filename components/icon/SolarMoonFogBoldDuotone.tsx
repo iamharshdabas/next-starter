@@ -1,11 +1,11 @@
 import { SVGProps } from "react"
 
-function SolarMoonFogBoldDuotone(props: SVGProps<SVGSVGElement>) {
+export const SolarMoonFogBoldDuotone = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
-      height="1em"
+      height="2em"
       viewBox="0 0 24 24"
-      width="1em"
+      width="2em"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
@@ -27,4 +27,3 @@ function SolarMoonFogBoldDuotone(props: SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
-export default SolarMoonFogBoldDuotone

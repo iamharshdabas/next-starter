@@ -1,7 +1,7 @@
 import { Button, ButtonProps } from "@nextui-org/button"
 import { signOut } from "next-auth/react"
 
-export default function AuthSignOut(props: ButtonProps) {
+export const AuthSignOut = (props: ButtonProps) => {
   return (
     <Button
       {...props}

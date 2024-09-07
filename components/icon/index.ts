@@ -1,0 +1,7 @@
+export * from "./LogosGithubIcon"
+export * from "./LogosGoogleIcon"
+export * from "./SolarEyeBoldDuotone"
+export * from "./SolarEyeClosedBoldDuotone"
+export * from "./SolarLetterBoldDuotone"
+export * from "./SolarMoonFogBoldDuotone"
+export * from "./SolarSunFogBoldDuotone"

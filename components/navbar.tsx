@@ -16,7 +16,7 @@ import { usePathname, useRouter } from "next/navigation"
 import { useState } from "react"
 
 import { ThemeSwitch } from "@/components/theme-switch"
-import { siteConfig } from "@/config/site"
+import { siteConfig } from "@/config"
 
 export const Navbar = () => {
   const router = useRouter()

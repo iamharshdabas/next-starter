@@ -1,11 +1,11 @@
-import React, { SVGProps } from "react"
+import { SVGProps } from "react"
 
-export function LogosGoogleIcon(props: SVGProps<SVGSVGElement>) {
+export const LogosGoogleIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
-      height="1em"
+      height="2em"
       viewBox="0 0 256 262"
-      width="0.98em"
+      width="2em"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
@@ -28,5 +28,3 @@ export function LogosGoogleIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
-export default LogosGoogleIcon
-

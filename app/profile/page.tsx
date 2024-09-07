@@ -4,11 +4,10 @@ import { Image } from "@nextui-org/image"
 import { Spacer } from "@nextui-org/spacer"
 import { useSession } from "next-auth/react"
 
-import { subtitle, title } from "@/config/primitives"
-import AuthSignOut from "@/components/auth/signout"
-import AuthDelete from "@/components/auth/delete"
+import { AuthDelete, AuthSignOut } from "@/components/auth"
+import { subtitle, title } from "@/config"
 
-export default function Profile() {
+const Profile = () => {
   const { data: session } = useSession()
 
   return (
@@ -39,3 +38,5 @@ export default function Profile() {
     </section>
   )
 }
+
+export default Profile

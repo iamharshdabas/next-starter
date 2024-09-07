@@ -1,16 +1,21 @@
 import { Input } from "@nextui-org/input"
 import { useState } from "react"
+import { useFormContext } from "react-hook-form"
 
-import SolarEyeBoldDuotone from "../icon/SolarEyeBoldDuotone"
-import SolarEyeClosedBoldDuotone from "../icon/SolarEyeClosedBoldDuotone"
+import { SolarEyeBoldDuotone, SolarEyeClosedBoldDuotone } from "../icon"
 
-export default function AuthPassword() {
+export const AuthPassword = () => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext()
   const [isVisible, setIsVisible] = useState(false)
 
   return (
     <Input
+      {...register("password")}
       endContent={
-        <button onClick={() => setIsVisible(!isVisible)}>
+        <button type="button" onClick={() => setIsVisible(!isVisible)}>
           {isVisible ? (
             <SolarEyeBoldDuotone height="2em" width="2em" />
           ) : (
@@ -18,10 +23,11 @@ export default function AuthPassword() {
           )}
         </button>
       }
+      errorMessage={errors.email?.message?.toString() || ""}
+      isInvalid={!!errors.password}
       label="Password"
       placeholder="Enter your password"
-      // TODO: hide content without using type="password"
-      type="text"
+      type={isVisible ? "text" : "password"}
       variant="bordered"
     />
   )

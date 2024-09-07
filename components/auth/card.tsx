@@ -1,8 +1,8 @@
 import { Card, CardBody, CardFooter } from "@nextui-org/card"
-import { ReactNode } from "react"
 import { Spacer } from "@nextui-org/spacer"
+import { ReactNode } from "react"
 
-import { title } from "@/config/primitives"
+import { title } from "@/config"
 
 interface Args {
   header: ReactNode
@@ -10,7 +10,7 @@ interface Args {
   children: ReactNode
 }
 
-export default function AuthCard({ header, footer, children }: Args) {
+export const AuthCard = ({ header, footer, children }: Args) => {
   return (
     <>
       <h1

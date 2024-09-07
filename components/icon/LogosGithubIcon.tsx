@@ -1,11 +1,11 @@
-import React, { SVGProps } from "react"
+import { SVGProps } from "react"
 
-export function LogosGithubIcon(props: SVGProps<SVGSVGElement>) {
+export const LogosGithubIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
-      height="1em"
+      height="2em"
       viewBox="0 0 256 250"
-      width="1.03em"
+      width="2em"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
@@ -16,5 +16,3 @@ export function LogosGithubIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
-export default LogosGithubIcon
-

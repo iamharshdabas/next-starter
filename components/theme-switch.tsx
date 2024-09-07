@@ -7,8 +7,7 @@ import clsx from "clsx"
 import { useTheme } from "next-themes"
 import { FC } from "react"
 
-import SolarMoonFogBoldDuotone from "./icon/SolarMoonFogBoldDuotone"
-import SolarSunFogBoldDuotone from "./icon/SolarSunFogBoldDuotone"
+import { SolarMoonFogBoldDuotone, SolarSunFogBoldDuotone } from "./icon"
 
 export interface ThemeSwitchProps {
   className?: string

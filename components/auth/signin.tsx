@@ -1,10 +1,8 @@
 import { Button, ButtonProps } from "@nextui-org/button"
-import { signIn } from "next-auth/react"
 
-export default function AuthSignIn(props: ButtonProps) {
+export const AuthSignIn = (props: ButtonProps) => {
   return (
-    // TODO:
-    <Button {...props} color="primary" onPress={() => signIn()}>
+    <Button {...props} fullWidth color="primary" type="submit">
       Sign in
     </Button>
   )
