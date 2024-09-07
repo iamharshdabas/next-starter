@@ -1,5 +1,7 @@
 import { z } from "zod"
 
+import { signInPasswordLength } from "@/config"
+
 export const signInSchema = z.object({
   email: z
     .string()
@@ -7,7 +9,9 @@ export const signInSchema = z.object({
     .min(1, { message: "Email is required" }),
   password: z
     .string()
-    .min(4, { message: "Password must be at least 4 characters long" })
+    .min(signInPasswordLength, {
+      message: `Password must be at least ${signInPasswordLength} characters long`,
+    })
     .min(1, { message: "Password is required" }),
   code: z.string().optional(),
 })

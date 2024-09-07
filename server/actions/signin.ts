@@ -1,7 +1,7 @@
 "use server"
 
-import { createSafeActionClient } from "next-safe-action"
 import { eq } from "drizzle-orm"
+import { createSafeActionClient } from "next-safe-action"
 
 import { db } from "../db"
 import { users } from "../schema"

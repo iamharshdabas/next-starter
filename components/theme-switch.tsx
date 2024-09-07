@@ -71,9 +71,9 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
         })}
       >
         {!isSelected || isSSR ? (
-          <SolarSunFogBoldDuotone height="2em" width="2em" />
+          <SolarSunFogBoldDuotone />
         ) : (
-          <SolarMoonFogBoldDuotone height="2em" width="2em" />
+          <SolarMoonFogBoldDuotone />
         )}
       </div>
     </Component>

@@ -16,11 +16,7 @@ export const AuthPassword = () => {
       {...register("password")}
       endContent={
         <button type="button" onClick={() => setIsVisible(!isVisible)}>
-          {isVisible ? (
-            <SolarEyeBoldDuotone height="2em" width="2em" />
-          ) : (
-            <SolarEyeClosedBoldDuotone height="2em" width="2em" />
-          )}
+          {isVisible ? <SolarEyeBoldDuotone /> : <SolarEyeClosedBoldDuotone />}
         </button>
       }
       errorMessage={errors.email?.message?.toString() || ""}

@@ -12,7 +12,7 @@ export const AuthEmail = () => {
   return (
     <Input
       {...register("email")}
-      endContent={<SolarLetterBoldDuotone height="2em" width="2em" />}
+      endContent={<SolarLetterBoldDuotone />}
       errorMessage={errors.email?.message?.toString() || ""}
       isInvalid={!!errors.email}
       label="Email"

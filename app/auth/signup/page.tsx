@@ -17,19 +17,20 @@ import {
   AuthSignIn,
 } from "@/components/auth"
 import { DoubleDivider } from "@/components/ui"
-import { signInSchema } from "@/schema"
-import { signInAction } from "@/server/actions"
+import { signUpSchema } from "@/schema"
+import { signUpAction } from "@/server/actions"
+import { AuthName } from "@/components/auth/name"
 
-type FormData = z.infer<typeof signInSchema>
+type FormData = z.infer<typeof signUpSchema>
 
-const SignIn = () => {
+const SignUp = () => {
   const methods = useForm<FormData>({
-    resolver: zodResolver(signInSchema),
+    resolver: zodResolver(signUpSchema),
   })
 
   const [error, setError] = useState("")
 
-  const { execute, isPending } = useAction(signInAction, {
+  const { execute, isPending } = useAction(signUpAction, {
     onSuccess: (data) => {
       if (data.data?.error) {
         setError(data.data.error)
@@ -46,14 +47,16 @@ const SignIn = () => {
       <AuthCard
         footer={
           <>
-            <span>Don&apos;t have an account?</span>
-            <Link href="/auth/signup">SignUp</Link>
+            <span>Already have an account?</span>
+            <Link href="/auth/signin">SignIn</Link>
           </>
         }
-        header="Welcome Back"
+        header="Create an Account"
       >
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>
+            <AuthName />
+            <Spacer y={4} />
             <AuthEmail />
             <Spacer y={4} />
             <AuthPassword />
@@ -74,4 +77,4 @@ const SignIn = () => {
   )
 }
 
-export default SignIn
+export default SignUp

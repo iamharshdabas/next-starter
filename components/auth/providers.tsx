@@ -12,7 +12,7 @@ export const AuthProviders = () => {
         variant="bordered"
         onPress={() => signIn("google", { redirect: true, callbackUrl: "/" })}
       >
-        <LogosGoogleIcon height="1.5em" width="1.5em" /> Connect with Google
+        <LogosGoogleIcon /> Connect with Google
       </Button>
       <Spacer y={4} />
       <Button
@@ -20,7 +20,7 @@ export const AuthProviders = () => {
         variant="bordered"
         onPress={() => signIn("github", { redirect: true, callbackUrl: "/" })}
       >
-        <LogosGithubIcon height="1.5em" width="1.5em" /> Connect with Github
+        <LogosGithubIcon /> Connect with Github
       </Button>
     </div>
   )
