@@ -3,10 +3,10 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Link } from "@nextui-org/link"
 import { Spacer } from "@nextui-org/spacer"
+import { useAction } from "next-safe-action/hooks"
 import { FormProvider, useForm } from "react-hook-form"
 import { z } from "zod"
 
-import { DoubleDivider } from "@/components/ui"
 import {
   AuthCard,
   AuthEmail,
@@ -14,27 +14,21 @@ import {
   AuthProviders,
   AuthSignIn,
 } from "@/components/auth"
+import { DoubleDivider } from "@/components/ui"
+import { signInSchema } from "@/schema"
+import { signInAction } from "@/server/actions"
 
-const schema = z.object({
-  email: z
-    .string()
-    .email({ message: "Invalid email address" })
-    .min(1, { message: "Email is required" }),
-  password: z
-    .string()
-    .min(4, { message: "Password must be at least 6 characters long" })
-    .min(1, { message: "Password is required" }),
-})
-
-type FormData = z.infer<typeof schema>
+type FormData = z.infer<typeof signInSchema>
 
 const SignIn = () => {
   const methods = useForm<FormData>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(signInSchema),
   })
 
+  const { execute, isPending } = useAction(signInAction)
+
   const onSubmit = async (data: FormData) => {
-    console.log(data)
+    execute(data)
   }
 
   return (
@@ -54,7 +48,7 @@ const SignIn = () => {
             <Spacer y={4} />
             <AuthPassword />
             <Spacer y={4} />
-            <AuthSignIn />
+            <AuthSignIn isDisabled={isPending} isLoading={isPending} />
           </form>
         </FormProvider>
         <DoubleDivider />
