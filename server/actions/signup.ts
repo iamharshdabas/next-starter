@@ -41,7 +41,9 @@ export const signUpAction = action
     const response = await sendVerificationEmail(email, token[0].token)
 
     if (response) {
-      throw new Error(response.message || "An unknown error occurred")
+      return {
+        error: response.message || "An unknown error occurred",
+      }
     }
 
     return { success: "Verification email sent" }
