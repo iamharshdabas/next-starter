@@ -28,6 +28,8 @@ const Verification = () => {
           setSuccess(response.success)
           setError("")
         }
+      } else {
+        setError("Token not found in the URL")
       }
     }
 
