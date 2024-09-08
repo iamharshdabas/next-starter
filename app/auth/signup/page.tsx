@@ -7,6 +7,7 @@ import { useAction } from "next-safe-action/hooks"
 import { useState } from "react"
 import { FormProvider, useForm } from "react-hook-form"
 import { z } from "zod"
+import { Button } from "@nextui-org/button"
 
 import {
   AuthCard,
@@ -14,7 +15,6 @@ import {
   AuthError,
   AuthPassword,
   AuthProviders,
-  AuthSignIn,
   AuthSuccess,
 } from "@/components/auth"
 import { DoubleDivider } from "@/components/ui"
@@ -37,12 +37,8 @@ const SignUp = () => {
       setError("")
       setSuccess("")
 
-      if (data.data?.error && data.data.message) {
-        setError(data.data.message)
-      }
-      if (data.data?.success && data.data.message) {
-        setSuccess(data.data.message)
-      }
+      if (data.data?.error) setError(data.data.error)
+      if (data.data?.success) setSuccess(data.data.success)
     },
   })
 
@@ -63,11 +59,11 @@ const SignUp = () => {
       >
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>
-            <AuthName />
+            <AuthName disabled={Boolean(success) || isPending} />
             <Spacer y={4} />
-            <AuthEmail />
+            <AuthEmail disabled={Boolean(success) || isPending} />
             <Spacer y={4} />
-            <AuthPassword />
+            <AuthPassword disabled={Boolean(success) || isPending} />
             {error && (
               <>
                 <Spacer y={4} />
@@ -81,7 +77,15 @@ const SignUp = () => {
               </>
             )}
             <Spacer y={4} />
-            <AuthSignIn isDisabled={isPending} isLoading={isPending} />
+            <Button
+              fullWidth
+              color="primary"
+              isDisabled={isPending}
+              isLoading={isPending}
+              type="submit"
+            >
+              SignUp
+            </Button>
           </form>
         </FormProvider>
         <DoubleDivider />

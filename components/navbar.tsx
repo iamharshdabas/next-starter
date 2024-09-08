@@ -1,6 +1,5 @@
 "use client"
 
-import { Button } from "@nextui-org/button"
 import {
   NavbarBrand,
   NavbarContent,
@@ -10,10 +9,12 @@ import {
   Navbar as NextUINavbar,
 } from "@nextui-org/navbar"
 import { User } from "@nextui-org/user"
-import { signIn, useSession } from "next-auth/react"
+import { useSession } from "next-auth/react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { useState } from "react"
+
+import { AuthSignIn } from "./auth"
 
 import { ThemeSwitch } from "@/components/theme-switch"
 import { siteConfig } from "@/config"
@@ -64,20 +65,14 @@ export const Navbar = () => {
             onClick={() => router.push("/profile")}
           />
         ) : (
-          <Button color="primary" variant="shadow" onPress={() => signIn()}>
-            SignIn
-          </Button>
+          <AuthSignIn />
         )}
       </NavbarContent>
 
       {/* MENU */}
       <NavbarContent className="sm:hidden" justify="end">
         <ThemeSwitch />
-        {!session && (
-          <Button color="primary" variant="shadow" onPress={() => signIn()}>
-            SignIn
-          </Button>
-        )}
+        {!session && <AuthSignIn />}
       </NavbarContent>
 
       <NavbarMenu>

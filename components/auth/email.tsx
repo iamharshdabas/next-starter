@@ -1,9 +1,9 @@
-import { Input } from "@nextui-org/input"
+import { Input, InputProps } from "@nextui-org/input"
 import { useFormContext } from "react-hook-form"
 
 import { SolarLetterBoldDuotone } from "../icon"
 
-export const AuthEmail = () => {
+export const AuthEmail = (props: InputProps) => {
   const {
     register,
     formState: { errors },
@@ -11,6 +11,7 @@ export const AuthEmail = () => {
 
   return (
     <Input
+      {...props}
       {...register("email")}
       endContent={<SolarLetterBoldDuotone />}
       errorMessage={errors.email?.message?.toString() || ""}

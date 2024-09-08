@@ -1,10 +1,8 @@
 "use server"
 
-import { eq } from "drizzle-orm"
 import { createSafeActionClient } from "next-safe-action"
 
-import { db } from "../db"
-import { users } from "../schema"
+import { getExistingUser } from "./utils"
 
 import { signInSchema } from "@/schema"
 
@@ -13,13 +11,11 @@ const action = createSafeActionClient()
 export const signInAction = action
   .schema(signInSchema)
   .action(async ({ parsedInput: { email } }) => {
-    const existingUser = await db.query.users.findFirst({
-      where: eq(users.email, email),
-    })
+    const existingUser = await getExistingUser(email)
 
     if (existingUser?.email !== email) {
-      return { error: true, message: "User not found" }
+      return { error: "User not found" }
     }
 
-    return { success: true, message: "Welcome" }
+    return { success: "Welcome" }
   })

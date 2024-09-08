@@ -3,13 +3,13 @@
 import { Resend } from "resend"
 
 import { getBaseUrl } from "@/utils"
-import { resendApiKeyEmail, siteConfig } from "@/config"
+import { resendApiKeyEmail, siteConfig, urlTokenSearchParam } from "@/config"
 
 const resend = new Resend(process.env.RESEND)
 const domain = getBaseUrl()
 
 export const sendVerificationEmail = async (email: string, token: string) => {
-  const link = `${domain}/auth/verification?token=${token}`
+  const link = `${domain}/auth/verification?${urlTokenSearchParam}=${token}`
 
   const { error } = await resend.emails.send({
     from: `${siteConfig.name} <onboarding@resend.dev>`,

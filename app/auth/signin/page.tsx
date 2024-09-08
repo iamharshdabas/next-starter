@@ -7,6 +7,7 @@ import { useAction } from "next-safe-action/hooks"
 import { useState } from "react"
 import { FormProvider, useForm } from "react-hook-form"
 import { z } from "zod"
+import { Button } from "@nextui-org/button"
 
 import {
   AuthCard,
@@ -14,7 +15,6 @@ import {
   AuthError,
   AuthPassword,
   AuthProviders,
-  AuthSignIn,
 } from "@/components/auth"
 import { DoubleDivider } from "@/components/ui"
 import { signInSchema } from "@/schema"
@@ -32,9 +32,7 @@ const SignIn = () => {
   const { execute, isPending } = useAction(signInAction, {
     onSuccess: (data) => {
       setError("")
-      if (data.data?.error && data.data.message) {
-        setError(data.data.message)
-      }
+      if (data.data?.error) setError(data.data.error)
     },
   })
 
@@ -55,9 +53,9 @@ const SignIn = () => {
       >
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>
-            <AuthEmail />
+            <AuthEmail disabled={isPending} />
             <Spacer y={4} />
-            <AuthPassword />
+            <AuthPassword disabled={isPending} />
             {error && (
               <>
                 <Spacer y={4} />
@@ -65,7 +63,15 @@ const SignIn = () => {
               </>
             )}
             <Spacer y={4} />
-            <AuthSignIn isDisabled={isPending} isLoading={isPending} />
+            <Button
+              fullWidth
+              color="primary"
+              isDisabled={isPending}
+              isLoading={isPending}
+              type="submit"
+            >
+              SignIn
+            </Button>
           </form>
         </FormProvider>
         <DoubleDivider />
