@@ -2,8 +2,8 @@
 
 import { Image } from "@nextui-org/image"
 import { Spacer } from "@nextui-org/spacer"
-import { useSession } from "next-auth/react"
 import { cn } from "@nextui-org/theme"
+import { useSession } from "next-auth/react"
 
 import { AuthDelete, AuthSignOut } from "@/components/auth"
 import { subtitle, title } from "@/config"

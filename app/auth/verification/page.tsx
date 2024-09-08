@@ -1,8 +1,8 @@
 "use client"
 
+import { Spacer } from "@nextui-org/spacer"
 import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
-import { Spacer } from "@nextui-org/spacer"
 
 import { subtitle, title, urlTokenSearchParam } from "@/config"
 import { verifyToken } from "@/server/actions/utils"

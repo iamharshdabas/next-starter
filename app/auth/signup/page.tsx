@@ -1,13 +1,13 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
+import { Button } from "@nextui-org/button"
 import { Link } from "@nextui-org/link"
 import { Spacer } from "@nextui-org/spacer"
 import { useAction } from "next-safe-action/hooks"
 import { useState } from "react"
 import { FormProvider, useForm } from "react-hook-form"
 import { z } from "zod"
-import { Button } from "@nextui-org/button"
 
 import {
   AuthCard,
@@ -17,10 +17,10 @@ import {
   AuthProviders,
   AuthSuccess,
 } from "@/components/auth"
+import { AuthName } from "@/components/auth/name"
 import { DoubleDivider } from "@/components/ui"
 import { signUpSchema } from "@/schema"
 import { signUpAction } from "@/server/actions"
-import { AuthName } from "@/components/auth/name"
 
 type FormData = z.infer<typeof signUpSchema>
 

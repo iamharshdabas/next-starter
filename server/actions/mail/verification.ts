@@ -2,8 +2,8 @@
 
 import { Resend } from "resend"
 
-import { getBaseUrl } from "@/utils"
 import { resendApiKeyEmail, siteConfig, urlTokenSearchParam } from "@/config"
+import { getBaseUrl } from "@/utils"
 
 const resend = new Resend(process.env.RESEND)
 const domain = getBaseUrl()
