@@ -18,8 +18,8 @@ export const signInAction = action
     })
 
     if (existingUser?.email !== email) {
-      return { error: "User not found" }
+      return { error: true, message: "User not found" }
     }
 
-    return { success: true }
+    return { success: true, message: "Welcome" }
   })

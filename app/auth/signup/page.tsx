@@ -15,6 +15,7 @@ import {
   AuthPassword,
   AuthProviders,
   AuthSignIn,
+  AuthSuccess,
 } from "@/components/auth"
 import { DoubleDivider } from "@/components/ui"
 import { signUpSchema } from "@/schema"
@@ -29,12 +30,18 @@ const SignUp = () => {
   })
 
   const [error, setError] = useState("")
+  const [success, setSuccess] = useState("")
 
   const { execute, isPending } = useAction(signUpAction, {
     onSuccess: (data) => {
       setError("")
-      if (data.data?.error) {
-        setError(data.data.error)
+      setSuccess("")
+
+      if (data.data?.error && data.data.message) {
+        setError(data.data.message)
+      }
+      if (data.data?.success && data.data.message) {
+        setSuccess(data.data.message)
       }
     },
   })
@@ -64,7 +71,13 @@ const SignUp = () => {
             {error && (
               <>
                 <Spacer y={4} />
-                <AuthError error={error} />
+                <AuthError message={error} />
+              </>
+            )}
+            {success && (
+              <>
+                <Spacer y={4} />
+                <AuthSuccess message={success} />
               </>
             )}
             <Spacer y={4} />

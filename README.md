@@ -15,6 +15,7 @@ This is a template for creating applications using Next.js 14 (app directory) an
 - [Neon](https://neon.tech/)
 - [Auth.js](https://authjs.dev/)
 - [Next Safe Action](https://next-safe-action.dev/)
+- [Resend](https://resend.com/)
 
 ### Icons
 

@@ -4,7 +4,7 @@ interface Args extends SnippetProps {
   message: string
 }
 
-export const AuthError = ({ message, ...props }: Args) => {
+export const AuthSuccess = ({ message, ...props }: Args) => {
   return (
     <Snippet
       fullWidth
@@ -12,7 +12,7 @@ export const AuthError = ({ message, ...props }: Args) => {
       size="lg"
       {...props}
       hideCopyButton
-      color="danger"
+      color="success"
       variant="flat"
     >
       {message}

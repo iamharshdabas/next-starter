@@ -3,6 +3,7 @@
 import { Image } from "@nextui-org/image"
 import { Spacer } from "@nextui-org/spacer"
 import { useSession } from "next-auth/react"
+import { cn } from "@nextui-org/theme"
 
 import { AuthDelete, AuthSignOut } from "@/components/auth"
 import { subtitle, title } from "@/config"
@@ -12,13 +13,20 @@ const Profile = () => {
 
   return (
     <section>
-      <div className="flex flex-col items-center sm:flex-row-reverse sm:justify-between">
-        <Image
-          isZoomed
-          alt="User profile"
-          src={session?.user?.image?.toString()}
-          width={256}
-        />
+      <div
+        className={cn(
+          "flex flex-col items-center sm:justify-between",
+          session?.user?.image ? "sm:flex-row-reverse" : "sm:flex-row"
+        )}
+      >
+        {session?.user?.image && (
+          <Image
+            isZoomed
+            alt="User profile"
+            src={session?.user?.image?.toString()}
+            width={256}
+          />
+        )}
 
         <div className="mt-8 text-center sm:text-start">
           <h1 className={title({ size: "lg", color: "foreground" })}>

@@ -32,8 +32,8 @@ const SignIn = () => {
   const { execute, isPending } = useAction(signInAction, {
     onSuccess: (data) => {
       setError("")
-      if (data.data?.error) {
-        setError(data.data.error)
+      if (data.data?.error && data.data.message) {
+        setError(data.data.message)
       }
     },
   })
@@ -61,7 +61,7 @@ const SignIn = () => {
             {error && (
               <>
                 <Spacer y={4} />
-                <AuthError error={error} />
+                <AuthError message={error} />
               </>
             )}
             <Spacer y={4} />
