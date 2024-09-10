@@ -15,6 +15,13 @@
       "when": 1725782979186,
       "tag": "0001_greedy_ikaris",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1725958946614,
+      "tag": "0002_chilly_wong",
+      "breakpoints": true
     }
   ]
 }

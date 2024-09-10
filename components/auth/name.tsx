@@ -11,7 +11,6 @@ export const AuthName = (props: InputProps) => {
 
   return (
     <Input
-      {...props}
       {...register("name")}
       endContent={<SolarUserBoldDuotone />}
       errorMessage={errors.name?.message?.toString() || ""}
@@ -19,6 +18,7 @@ export const AuthName = (props: InputProps) => {
       label="Name"
       placeholder="Enter your name"
       variant="bordered"
+      {...props}
     />
   )
 }

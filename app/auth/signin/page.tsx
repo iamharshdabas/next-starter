@@ -17,6 +17,7 @@ import {
   AuthProviders,
 } from "@/components/auth"
 import { DoubleDivider } from "@/components/ui"
+import { authConfig, siteConfig } from "@/config"
 import { signInSchema } from "@/schema"
 import { signInAction } from "@/server/actions"
 
@@ -45,11 +46,11 @@ const SignIn = () => {
       <AuthCard
         footer={
           <>
-            <span>Don&apos;t have an account?</span>
-            <Link href="/auth/signup">SignUp</Link>
+            <span>{authConfig.signUp.footer}</span>
+            <Link href={siteConfig.auth.signUp}>SignUp</Link>
           </>
         }
-        header="Welcome Back"
+        header={authConfig.signUp.header}
       >
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>

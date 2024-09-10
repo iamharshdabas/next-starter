@@ -11,7 +11,7 @@ export const AuthSignIn = (props: ButtonProps) => {
       variant="shadow"
       onPress={() => signIn()}
     >
-      Sign in
+      SignIn
     </Button>
   )
 }

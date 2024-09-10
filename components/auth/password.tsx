@@ -13,7 +13,6 @@ export const AuthPassword = (props: InputProps) => {
 
   return (
     <Input
-      {...props}
       {...register("password")}
       endContent={
         <button type="button" onClick={() => setIsVisible(!isVisible)}>
@@ -26,6 +25,7 @@ export const AuthPassword = (props: InputProps) => {
       placeholder="Enter your password"
       type={isVisible ? "text" : "password"}
       variant="bordered"
+      {...props}
     />
   )
 }

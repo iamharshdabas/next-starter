@@ -8,12 +8,12 @@ export const AuthError = ({ message, ...props }: Args) => {
   return (
     <Snippet
       fullWidth
-      hideSymbol
-      size="lg"
-      {...props}
       hideCopyButton
+      hideSymbol
       color="danger"
+      size="lg"
       variant="flat"
+      {...props}
     >
       {message}
     </Snippet>

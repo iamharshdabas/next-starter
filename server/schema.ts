@@ -44,19 +44,26 @@ export const accounts = pgTable(
   })
 )
 
-export const verificationTokens = pgTable(
-  "verificationToken",
-  {
-    id: text("id")
-      .notNull()
-      .$defaultFn(() => createId()),
-    token: text("token").notNull(),
-    email: text("email").notNull(),
-    expires: timestamp("expires", { mode: "date" }).notNull(),
-  },
-  (verificationToken) => ({
-    compositePk: primaryKey({
-      columns: [verificationToken.id, verificationToken.token],
-    }),
-  })
-)
+export const createTokenTable = (tableName: string) => {
+  return pgTable(
+    tableName,
+    {
+      id: text("id")
+        .notNull()
+        .$defaultFn(() => createId()),
+      token: text("token").notNull(),
+      email: text("email").notNull(),
+      expires: timestamp("expires", { mode: "date" }).notNull(),
+    },
+    (table) => ({
+      compositePk: primaryKey({
+        columns: [table.id, table.token],
+      }),
+    })
+  )
+}
+
+// NOTE: refer to @/config/auth/authConfig.token for table names
+// i didn't want to expose the table names for security reasons
+
+export const mailVerificationTokens = createTokenTable("mailVerificationToken")

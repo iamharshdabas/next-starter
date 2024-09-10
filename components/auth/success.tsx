@@ -8,12 +8,12 @@ export const AuthSuccess = ({ message, ...props }: Args) => {
   return (
     <Snippet
       fullWidth
-      hideSymbol
-      size="lg"
-      {...props}
       hideCopyButton
+      hideSymbol
       color="success"
+      size="lg"
       variant="flat"
+      {...props}
     >
       {message}
     </Snippet>

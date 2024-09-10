@@ -1,17 +1,27 @@
 import { z } from "zod"
 
-import { signUpPasswordLength } from "@/config"
+import { authConfig, errorConfig } from "@/config"
 
 export const signUpSchema = z.object({
-  name: z.string().min(1, { message: "Name is required" }),
+  name: z.string().min(1, {
+    message: errorConfig.auth.name.required,
+  }),
+
   email: z
     .string()
-    .email({ message: "Invalid email address" })
-    .min(1, { message: "Email is required" }),
+    .email({
+      message: errorConfig.auth.email.invalid,
+    })
+    .min(1, {
+      message: errorConfig.auth.email.required,
+    }),
+
   password: z
     .string()
-    .min(signUpPasswordLength, {
-      message: `Password must be at least ${signUpPasswordLength} characters long`,
+    .min(authConfig.signUp.passwordLength, {
+      message: errorConfig.auth.password.short,
     })
-    .min(1, { message: "Password is required" }),
+    .min(1, {
+      message: errorConfig.auth.password.required,
+    }),
 })

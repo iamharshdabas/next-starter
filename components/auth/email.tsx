@@ -11,7 +11,6 @@ export const AuthEmail = (props: InputProps) => {
 
   return (
     <Input
-      {...props}
       {...register("email")}
       endContent={<SolarLetterBoldDuotone />}
       errorMessage={errors.email?.message?.toString() || ""}
@@ -19,6 +18,7 @@ export const AuthEmail = (props: InputProps) => {
       label="Email"
       placeholder="Enter your email"
       variant="bordered"
+      {...props}
     />
   )
 }

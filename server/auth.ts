@@ -5,6 +5,8 @@ import Google from "next-auth/providers/google"
 
 import { db } from "./db"
 
+import { siteConfig } from "@/config"
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: DrizzleAdapter(db),
   secret: process.env.AUTH_SECRET,
@@ -20,7 +22,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   pages: {
-    signIn: "/auth/signin",
-    newUser: "/auth/signup",
+    signIn: siteConfig.auth.signIn,
+    newUser: siteConfig.auth.signUp,
   },
 })

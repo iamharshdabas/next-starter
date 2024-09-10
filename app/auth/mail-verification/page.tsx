@@ -4,32 +4,27 @@ import { Spacer } from "@nextui-org/spacer"
 import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 
-import { subtitle, title, urlTokenSearchParam } from "@/config"
-import { verifyToken } from "@/server/actions/utils"
+import { authConfig, errorConfig, subtitle, title } from "@/config"
+import { verifyMailVerificationToken } from "@/server/actions/token"
+import { AuthSignIn } from "@/components/auth"
 
 // INFO: this will always show error state in the end due to re render in development
 // TODO: check for the same in production
 
 const Verification = () => {
-  const token = useSearchParams().get(urlTokenSearchParam)
+  const token = useSearchParams().get(authConfig.token.mailVerification.url)
   const [error, setError] = useState("")
   const [success, setSuccess] = useState("")
 
   useEffect(() => {
     const verify = async () => {
       if (token) {
-        const response = await verifyToken(token)
+        const response = await verifyMailVerificationToken(token)
 
-        if (response?.error) {
-          setError(response.error)
-          setSuccess("")
-        }
-        if (response?.success) {
-          setSuccess(response.success)
-          setError("")
-        }
+        if (response?.error) setError(response.error)
+        if (response?.success) setSuccess(response.success)
       } else {
-        setError("Token not found in the URL")
+        setError(errorConfig.auth.token.notFoundUrl)
       }
     }
 
@@ -51,9 +46,10 @@ const Verification = () => {
           <>
             <h1 className={title({ size: "lg", color: "green" })}>{success}</h1>
             <p className={subtitle()}>
-              Email verified successfully! You can now Sign In to your account.
+              {authConfig.token.mailVerification.success}
             </p>
             <Spacer y={4} />
+            <AuthSignIn />
           </>
         )}
       </div>

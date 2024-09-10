@@ -13,4 +13,8 @@ export const siteConfig = {
       href: "/profile",
     },
   ],
+  auth: {
+    signIn: "/auth/signin",
+    signUp: "/auth/signup",
+  },
 }
