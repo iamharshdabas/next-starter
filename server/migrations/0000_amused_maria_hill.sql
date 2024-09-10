@@ -13,10 +13,19 @@ CREATE TABLE IF NOT EXISTS "account" (
 	CONSTRAINT "account_provider_providerAccountId_pk" PRIMARY KEY("provider","providerAccountId")
 );
 --> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "mailVerificationToken" (
+	"id" text NOT NULL,
+	"token" text NOT NULL,
+	"email" text NOT NULL,
+	"expires" timestamp NOT NULL,
+	CONSTRAINT "mailVerificationToken_id_token_pk" PRIMARY KEY("id","token")
+);
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "user" (
 	"id" text PRIMARY KEY NOT NULL,
 	"name" text,
 	"email" text,
+	"password" text,
 	"emailVerified" timestamp,
 	"image" text,
 	CONSTRAINT "user_email_unique" UNIQUE("email")

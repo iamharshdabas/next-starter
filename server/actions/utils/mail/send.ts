@@ -12,7 +12,7 @@ export const sendMailVerificationMail = async (
   email: string,
   token: string
 ) => {
-  const link = `${domain}/auth/mail-verification?${authConfig.token.mailVerification.url}=${token}`
+  const link = `${domain}/auth/mail-verification?${authConfig.token.mailVerification}=${token}`
 
   const { error } = await resend.emails.send({
     from: authConfig.mail.from,

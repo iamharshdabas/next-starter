@@ -3,8 +3,10 @@
 import { createId } from "@paralleldrive/cuid2"
 
 import {
-  deleteMailVerificationToken,
-  getMailVerificationToken,
+  deleteMailVerificationTokenByEmail,
+  deleteMailVerificationTokenByToken,
+  getMailVerificationTokenByEmail,
+  getMailVerificationTokenByToken,
 } from "../utils/token"
 import { getUser } from "../utils/user"
 
@@ -15,9 +17,9 @@ export const generateMailVerificationToken = async (email: string) => {
   const token = createId()
   const expires = new Date(new Date().getTime() + authConfig.token.expires)
 
-  const existingToken = await getMailVerificationToken(email)
+  const existingToken = await getMailVerificationTokenByEmail(email)
 
-  if (existingToken) await deleteMailVerificationToken(email)
+  if (existingToken) await deleteMailVerificationTokenByEmail(email)
 
   return await db
     .insert(mailVerificationTokens)
@@ -30,7 +32,7 @@ export const generateMailVerificationToken = async (email: string) => {
 }
 
 export const verifyMailVerificationToken = async (token: string) => {
-  const existingToken = await getMailVerificationToken(token)
+  const existingToken = await getMailVerificationTokenByToken(token)
 
   if (!existingToken) {
     return { error: errorConfig.auth.token.notFound }
@@ -55,7 +57,7 @@ export const verifyMailVerificationToken = async (token: string) => {
     emailVerified: new Date(),
   })
 
-  deleteMailVerificationToken(token)
+  deleteMailVerificationTokenByToken(token)
 
   return { success: errorConfig.auth.token.verified }
 }

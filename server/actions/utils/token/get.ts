@@ -4,10 +4,13 @@ import { eq } from "drizzle-orm"
 
 import { db, mailVerificationTokens } from "@/server"
 
-/**
- * @param token can be email or token because of composite key
- */
-export const getMailVerificationToken = async (token: string) => {
+export const getMailVerificationTokenByEmail = async (email: string) => {
+  return await db.query.mailVerificationTokens.findFirst({
+    where: eq(mailVerificationTokens.email, email),
+  })
+}
+
+export const getMailVerificationTokenByToken = async (token: string) => {
   return await db.query.mailVerificationTokens.findFirst({
     where: eq(mailVerificationTokens.token, token),
   })

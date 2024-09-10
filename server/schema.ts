@@ -55,9 +55,9 @@ export const createTokenTable = (tableName: string) => {
       email: text("email").notNull(),
       expires: timestamp("expires", { mode: "date" }).notNull(),
     },
-    (table) => ({
+    (tableName) => ({
       compositePk: primaryKey({
-        columns: [table.id, table.token],
+        columns: [tableName.id, tableName.token],
       }),
     })
   )

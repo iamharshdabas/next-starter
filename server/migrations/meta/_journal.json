@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1725615162849,
-      "tag": "0000_flowery_tombstone",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1725782979186,
-      "tag": "0001_greedy_ikaris",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1725958946614,
-      "tag": "0002_chilly_wong",
+      "when": 1725972579871,
+      "tag": "0000_amused_maria_hill",
       "breakpoints": true
     }
   ]

@@ -20,6 +20,9 @@ export const errorConfig = {
       expired: "Token expired",
       verified: "Token verified",
       notFoundUrl: "Token not found in url",
+
+      mailVerification: "Email verified successfully! You can now SignIn.",
+      forgotPassword: "Password changed successfully! You can now SignIn.",
     },
 
     user: {
@@ -28,6 +31,14 @@ export const errorConfig = {
       alreadyVerified: "User already verified",
       notVerified: "User not verified",
       verified: "User verified",
+    },
+
+    mail: {
+      sent: {
+        mailVerification: "Verification email sent",
+        forgotPassword: "Password reset email sent",
+        twoFactorAuthentication: "Two factor authentication code sent",
+      },
     },
   },
 }

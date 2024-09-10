@@ -42,5 +42,5 @@ export const signUpAction = action
       return { error: response.message }
     }
 
-    return { success: authConfig.mail.sent.mailVerification }
+    return { success: errorConfig.auth.mail.sent.mailVerification }
   })

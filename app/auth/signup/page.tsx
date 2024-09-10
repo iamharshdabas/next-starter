@@ -56,7 +56,7 @@ const SignUp = () => {
             <Link href={siteConfig.auth.signIn}>SignIn</Link>
           </>
         }
-        header={authConfig.signIn.header}
+        header={authConfig.signUp.header}
       >
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>

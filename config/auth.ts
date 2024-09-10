@@ -15,20 +15,9 @@ export const authConfig = {
   },
 
   token: {
-    mailVerification: {
-      url: "mailVerificationToken",
-      success: "Email verified successfully! You can now SignIn.",
-    },
-
-    forgotPassword: {
-      url: "forgotPasswordToken",
-      success: "Password changed successfully! You can now SignIn.",
-    },
-
-    twoFactorAuthentication: {
-      url: "twoFactorAuthenticationToken",
-    },
-
+    mailVerification: "mailVerificationToken",
+    forgotPassword: "forgotPasswordToken",
+    twoFactorAuthentication: "twoFactorAuthenticationToken",
     expires: 1000 * 60 * 5, // 5 Mins
   },
 
@@ -40,12 +29,6 @@ export const authConfig = {
       mailVerification: "Verify your email",
       forgotPassword: "Reset your password",
       twoFactorAuthentication: "Two Factor Authentication",
-    },
-
-    sent: {
-      mailVerification: "Verification email sent",
-      forgotPassword: "Password reset email sent",
-      twoFactorAuthentication: "Two factor authentication code sent",
     },
 
     body: {

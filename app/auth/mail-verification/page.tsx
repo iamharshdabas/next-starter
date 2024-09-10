@@ -12,7 +12,7 @@ import { AuthSignIn } from "@/components/auth"
 // TODO: check for the same in production
 
 const Verification = () => {
-  const token = useSearchParams().get(authConfig.token.mailVerification.url)
+  const token = useSearchParams().get(authConfig.token.mailVerification)
   const [error, setError] = useState("")
   const [success, setSuccess] = useState("")
 
@@ -46,7 +46,7 @@ const Verification = () => {
           <>
             <h1 className={title({ size: "lg", color: "green" })}>{success}</h1>
             <p className={subtitle()}>
-              {authConfig.token.mailVerification.success}
+              {errorConfig.auth.token.mailVerification}
             </p>
             <Spacer y={4} />
             <AuthSignIn />

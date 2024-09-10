@@ -15,6 +15,7 @@ import {
   AuthError,
   AuthPassword,
   AuthProviders,
+  AuthSuccess,
 } from "@/components/auth"
 import { DoubleDivider } from "@/components/ui"
 import { authConfig, siteConfig } from "@/config"
@@ -29,11 +30,15 @@ const SignIn = () => {
   })
 
   const [error, setError] = useState("")
+  const [success, setSuccess] = useState("")
 
   const { execute, isPending } = useAction(signInAction, {
     onSuccess: (data) => {
       setError("")
+      setSuccess("")
+
       if (data.data?.error) setError(data.data.error)
+      if (data.data?.success) setSuccess(data.data.success)
     },
   })
 
@@ -50,7 +55,7 @@ const SignIn = () => {
             <Link href={siteConfig.auth.signUp}>SignUp</Link>
           </>
         }
-        header={authConfig.signUp.header}
+        header={authConfig.signIn.header}
       >
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>
@@ -61,6 +66,12 @@ const SignIn = () => {
               <>
                 <Spacer y={4} />
                 <AuthError message={error} />
+              </>
+            )}
+            {success && (
+              <>
+                <Spacer y={4} />
+                <AuthSuccess message={success} />
               </>
             )}
             <Spacer y={4} />
