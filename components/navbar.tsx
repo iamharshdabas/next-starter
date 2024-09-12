@@ -24,7 +24,7 @@ export const Navbar = () => {
       <NavbarContent>
         <NavbarBrand as="li" className="max-w-fit gap-4">
           <Link className="flex items-center justify-start gap-1" color="foreground" href="/">
-            <p className={subtitle({ class: "font-bold" })}>ROOMS</p>
+            <p className={subtitle({ class: "font-bold" })}>{siteConfig.name}</p>
           </Link>
         </NavbarBrand>
         <ul className="hidden justify-start gap-4 pl-2 lg:flex">
