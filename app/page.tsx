@@ -2,7 +2,7 @@ import { bg, subtitle, title } from "@/config/primitives"
 
 export default function Home() {
   return (
-    <section>
+    <section className="flex flex-col items-center">
       <div className={bg({ className: "text-center" })}>
         <h1 className={title()}>Make beautiful websites</h1>
         <br />
