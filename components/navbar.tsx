@@ -8,83 +8,60 @@ import {
   NavbarMenuToggle,
   Navbar as NextUINavbar,
 } from "@nextui-org/navbar"
-import { User } from "@nextui-org/user"
-import { useSession } from "next-auth/react"
 import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
-import { useState } from "react"
-
-import { AuthSignIn } from "./auth"
+import { usePathname } from "next/navigation"
 
 import { ThemeSwitch } from "@/components/theme-switch"
-import { siteConfig } from "@/config"
+import { subtitle } from "@/config/primitives"
+import { siteConfig } from "@/config/site"
 
 export const Navbar = () => {
-  const router = useRouter()
-  const pathName = usePathname()
-  const { data: session } = useSession()
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   return (
-    <NextUINavbar
-      shouldHideOnScroll
-      isMenuOpen={isMenuOpen}
-      maxWidth="full"
-      position="sticky"
-      onMenuOpenChange={setIsMenuOpen}
-    >
+    // here px-6 is applied internally and to increase it to px-8, i added pl-2
+    <NextUINavbar className="px-2" maxWidth="full" position="sticky">
       <NavbarContent>
-        <NavbarMenuToggle className="sm:hidden" />
-        <NavbarBrand as="li" className="max-w-fit">
-          <Link className="flex items-center justify-start gap-2" href="/">
-            <p className="font-bold text-foreground">{siteConfig.name}</p>
+        <NavbarBrand as="li" className="max-w-fit gap-4">
+          <Link className="flex items-center justify-start gap-1" color="foreground" href="/">
+            <p className={subtitle({ class: "font-bold" })}>ROOMS</p>
           </Link>
         </NavbarBrand>
-        <ul className="ml-4 hidden justify-start gap-4 sm:flex">
+        <ul className="hidden justify-start gap-4 pl-2 lg:flex">
           {siteConfig.navItems.map((item) => (
             <NavbarItem
               key={item.href}
-              className="text-foreground data-[active=true]:text-primary"
-              hidden={item.label === "Profile"}
-              isActive={item.href === pathName}
+              className="text-foreground data-[active=true]:font-bold data-[active=true]:text-primary"
+              isActive={item.href === pathname}
             >
-              <Link href={item.href}>{item.label}</Link>
+              <Link className={subtitle()} href={item.href}>
+                {item.label}
+              </Link>
             </NavbarItem>
           ))}
         </ul>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex" justify="end">
-        <ThemeSwitch />
-        {session ? (
-          <User
-            avatarProps={{ src: session?.user?.image?.toString() }}
-            className="cursor-pointer"
-            description={session?.user?.email}
-            name={session?.user?.name}
-            onClick={() => router.push("/profile")}
-          />
-        ) : (
-          <AuthSignIn />
-        )}
+        <NavbarItem>
+          <ThemeSwitch />
+        </NavbarItem>
       </NavbarContent>
 
-      {/* MENU */}
       <NavbarContent className="sm:hidden" justify="end">
         <ThemeSwitch />
-        {!session && <AuthSignIn />}
+        <NavbarMenuToggle />
       </NavbarContent>
 
-      <NavbarMenu>
-        <div className="mx-4 mt-2 flex flex-col gap-2">
+      <NavbarMenu className="px-8">
+        <div className="flex flex-col gap-4 py-8">
           {siteConfig.navItems.map((item) => (
             <NavbarItem
               key={item.href}
-              className="text-foreground data-[active=true]:text-primary"
-              data-active={item.href === pathName}
-              hidden={item.label === "Profile" && !session}
+              className="text-foreground data-[active=true]:font-bold data-[active=true]:text-primary"
+              isActive={item.href === pathname}
             >
-              <Link href={item.href} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              <Link className={subtitle()} href={item.href}>
                 {item.label}
               </Link>
             </NavbarItem>

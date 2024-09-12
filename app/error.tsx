@@ -3,14 +3,9 @@
 import { Button } from "@nextui-org/button"
 import { useEffect } from "react"
 
-import { title } from "@/config"
+import { title } from "@/config/primitives"
 
-interface Args {
-  error: Error
-  reset: () => void
-}
-
-const Error = ({ error, reset }: Args) => {
+export default function Error({ error, reset }: { error: Error; reset: () => void }) {
   useEffect(() => {
     /* eslint-disable no-console */
     console.error(error)
@@ -18,12 +13,10 @@ const Error = ({ error, reset }: Args) => {
 
   return (
     <div>
-      <h1 className={title({ size: "sm" })}>Something went wrong!</h1>
-      <Button variant="flat" onClick={() => reset()}>
+      <h1 className={title()}>Something went wrong!</h1>
+      <Button variant="bordered" onClick={() => reset()}>
         Try again
       </Button>
     </div>
   )
 }
-
-export default Error

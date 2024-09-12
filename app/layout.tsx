@@ -3,10 +3,10 @@ import clsx from "clsx"
 import { Metadata, Viewport } from "next"
 import { ReactNode } from "react"
 
-import Providers from "./providers"
+import { Providers } from "./providers"
 
 import { Navbar } from "@/components/navbar"
-import { fontSans, siteConfig } from "@/config"
+import { siteConfig } from "@/config/site"
 
 export const metadata: Metadata = {
   title: {
@@ -26,23 +26,16 @@ export const viewport: Viewport = {
   ],
 }
 
-const RootLayout = ({ children }: { children: ReactNode }) => {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html suppressHydrationWarning lang="en">
       <head />
-      <body
-        className={clsx(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >
+      <body className={clsx("min-h-screen bg-background font-sans antialiased")}>
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex h-screen flex-col">
-            <div className="mx-auto w-full max-w-7xl grow">
+            <div className="mx-auto w-full max-w-screen-2xl">
               <Navbar />
-              <main className="flex flex-col gap-4 p-6 lg:pt-24">
-                {children}
-              </main>
+              <main className="px-8 py-16">{children}</main>
             </div>
           </div>
         </Providers>
@@ -50,5 +43,3 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
     </html>
   )
 }
-
-export default RootLayout

@@ -1,20 +1,12 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Next Starter",
-  description: "A starter template for Next.js",
+  name: "Black Rooms",
+  description: "Rooms by BlackEmpyreal",
   navItems: [
     {
       label: "Home",
       href: "/",
     },
-    {
-      label: "Profile",
-      href: "/profile",
-    },
   ],
-  auth: {
-    signIn: "/auth/signin",
-    signUp: "/auth/signup",
-  },
 }
